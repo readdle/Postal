@@ -45,25 +45,31 @@ extension MessageExtension: CustomStringConvertible {
 
 // MARK: IMAP Parsing
 
+extension mailimap_extension_api: Equatable {
+    public static func == (lhs: mailimap_extension_api, rhs: mailimap_extension_api) -> Bool {
+        return lhs.ext_id == rhs.ext_id
+    }
+}
+
 extension mailimap_extension_data {
     var parse: MessageExtension? {
-        switch ext_extension {
-        case &mailimap_extension_condstore:
+        switch ext_extension.pointee {
+        case mailimap_extension_condstore:
             let modSeq = ext_data.assumingMemoryBound(to: mailimap_condstore_fetch_mod_resp.self).pointee.cs_modseq_value
-            
+
             return .modSeq(modSeq)
-        case &mailimap_extension_xgmlabels:
+        case mailimap_extension_xgmlabels:
             guard let labelList = ext_data.assumingMemoryBound(to: mailimap_msg_att_xgmlabels.self).pointee.att_labels else { return nil }
-            let labels = pointerSequence(labelList, of: CChar.self).flatMap(String.fromUTF8CString)
+            let labels = pointerSequence(labelList, of: CChar.self).compactMap(String.fromUTF8CString)
 
             return labels.count > 0 ? .gmailLabels(labels) : nil
-        case &mailimap_extension_xgmthrid:
+        case mailimap_extension_xgmthrid:
             let threadId = ext_data.assumingMemoryBound(to: UInt64.self).pointee
-            
+
             return .gmailThreadId(threadId)
-        case &mailimap_extension_xgmmsgid:
+        case mailimap_extension_xgmmsgid:
             let msgId = ext_data.assumingMemoryBound(to: UInt64.self).pointee
-            
+
             return .gmailMessageId(msgId)
         default:
             return nil
