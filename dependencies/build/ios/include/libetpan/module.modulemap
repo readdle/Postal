@@ -1,6 +1,0 @@
-module libetpan [system] [extern_c] {
-    header "libetpan/libetpan.h"
-    header "libetpan/clist.h"
-
-    export *
-}
