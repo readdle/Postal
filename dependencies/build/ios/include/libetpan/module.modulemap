@@ -1,0 +1,6 @@
+module libetpan {
+    header "libetpan.h"
+    header "clist.h"
+
+    export *
+}

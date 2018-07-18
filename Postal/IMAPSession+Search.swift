@@ -255,7 +255,8 @@ extension IMAPSession {
         
         if capabilities.contains(.LiteralPlus) {
             try mailimap_uid_search_literalplus(imap, charset, key, &resultList).toIMAPError?.asPostalError.check()
-        } else {
+        }
+        else {
             try mailimap_uid_search(imap, charset, key, &resultList).toIMAPError?.check()
         }
         defer { mailimap_search_result_free(resultList) }

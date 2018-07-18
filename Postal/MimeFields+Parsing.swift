@@ -26,14 +26,14 @@ import Foundation
 import libetpan
 
 public struct MimeFields {
-    public fileprivate(set) var name: String? = nil
-    public fileprivate(set) var charset: String? = nil
+    public fileprivate(set) var name: String?
+    public fileprivate(set) var charset: String?
     public fileprivate(set) var contentType: [MimeType] = []
-    public fileprivate(set) var contentId: String? = nil
-    public fileprivate(set) var contentDescription: String? = nil
-    public fileprivate(set) var contentEncoding: ContentEncoding? = nil
-    public fileprivate(set) var contentLocation: String? = nil
-    public fileprivate(set) var contentDisposition: ContentDisposition? = nil
+    public fileprivate(set) var contentId: String?
+    public fileprivate(set) var contentDescription: String?
+    public fileprivate(set) var contentEncoding: ContentEncoding?
+    public fileprivate(set) var contentLocation: String?
+    public fileprivate(set) var contentDisposition: ContentDisposition?
 }
 
 // MARK: IMAP Parsing
@@ -101,7 +101,7 @@ extension mailmime_single_fields {
         let filename = String.fromZeroSizedCStringMimeHeader(fld_disposition_filename)
         let name = String.fromZeroSizedCStringMimeHeader(fld_content_name)
         let contentId = fld_id != nil ? String.fromUTF8CString(fld_id) : nil
-        let description  = fld_description != nil ? String.fromUTF8CString(fld_description) : nil
+        let description = fld_description != nil ? String.fromUTF8CString(fld_description) : nil
         let charset = String.fromZeroSizedCStringMimeHeader(fld_content_charset)
         let loc = fld_location != nil ? String.fromUTF8CString(fld_location) : nil
         let encoding = fld_encoding?.pointee.parse
@@ -116,7 +116,8 @@ extension mailmime_single_fields {
                         MimeType(type: type, subtype: subtype)
                     }
                 }
-        } else {
+        }
+        else {
             content = []
         }
 

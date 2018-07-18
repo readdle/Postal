@@ -44,7 +44,8 @@ extension IMAPSession {
             let result: [Int: Int]
             if let srcUids = srcUid?.pointee.array, let destUids = destUid?.pointee.array, !srcUids.isEmpty && !destUids.isEmpty {
                 result = Dictionary(keys: srcUids, values: destUids)
-            } else {
+            }
+            else {
                 result = [:]
             }
 

@@ -51,7 +51,7 @@ extension Data {
         var decodedLength: Int = 0
         let decodeFunc = partial ? mailmime_part_parse_partial : mailmime_part_parse
         
-        let _ = withUnsafeBytes { (bytes: UnsafePointer<Int8>) in
+        _ = withUnsafeBytes { (bytes: UnsafePointer<Int8>) in
             decodeFunc(bytes, count, &curToken, Int32(mechanism), &decodedBytes, &decodedLength)
         }
         
@@ -62,7 +62,8 @@ extension Data {
             remaining = withUnsafeBytes { bytes in
                Data(bytes: UnsafeRawPointer(bytes + curToken), count: count - curToken)
             }
-        } else {
+        }
+        else {
             remaining = nil
         }
         return (decoded: decodedData, remaining: remaining)
@@ -83,11 +84,13 @@ extension Data {
                 if let next = next { // line is complete
                     accumulator.append(data.uudecodedLine)
                     currentPosition = next
-                } else { // no new line
+                }
+                else { // no new line
                     if !partial { // not partial, just decode remaining bytes
                         accumulator.append(data.uudecodedLine)
                         return (decoded: accumulator as Data, remaining: nil)
-                    } else { // partial, return remaining bytes as remaining
+                    }
+                    else { // partial, return remaining bytes as remaining
                         let remainingBytesCopy: Data = data.withUnsafeBytes { (bytes: UnsafePointer<Int8>) in
                             return Data(bytes: bytes, count: data.count) // force copy of remaining data
                         }
@@ -159,9 +162,10 @@ extension Data {
                 if lineStart[lineSize] == cr || lineStart[lineSize] == lf {
                     // found eol
                     let data = Data(bytesNoCopy: lineStart, count: lineSize, deallocator: .none)
-                    let next = UnsafePointer<CChar>(lineStart+lineSize+1)
+                    let next = UnsafePointer<CChar>(lineStart+lineSize + 1)
                     return (data: data, next: next)
-                } else {
+                }
+                else {
                     lineSize += 1
                 }
             }

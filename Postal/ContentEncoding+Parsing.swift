@@ -39,7 +39,8 @@ extension ContentEncoding {
     init(rawValue: Int) {
         if rawValue < 0 {
             self = .uuEncoding
-        } else {
+        }
+        else {
             switch rawValue {
             case 0: self = .encoding7Bit
             case 1: self = .encoding8Bit
@@ -71,7 +72,7 @@ extension ContentEncoding: CustomStringConvertible {
 
 extension mailimap_body_fld_enc {
     var parse: ContentEncoding {
-        if let value = String.fromUTF8CString(enc_value)?.lowercased() , Int(enc_type) == MAILIMAP_BODY_FLD_ENC_OTHER {
+        if let value = String.fromUTF8CString(enc_value)?.lowercased(), Int(enc_type) == MAILIMAP_BODY_FLD_ENC_OTHER {
             if value == "x-uuencode" || value == "uuencode" {
                 return .uuEncoding
             }

@@ -107,7 +107,8 @@ extension MimeFields {
                               contentEncoding: first.contentEncoding ?? second.contentEncoding,
                               contentLocation: first.contentLocation ?? second.contentLocation,
                               contentDisposition: first.contentDisposition ?? second.contentDisposition)
-        } else {
+        }
+        else {
             return first ?? second
         }
     }

@@ -32,10 +32,10 @@ public extension Postal {
                     ifSuccess: {
                         observer.send(value: ())
                         observer.sendCompleted()
-                    },
+                },
                     ifFailure: observer.send)
-                }
             }
+        }
     }
     
     func rac_listFolders() -> SignalProducer<[Folder], PostalError> {
@@ -45,10 +45,10 @@ public extension Postal {
                     ifSuccess: { folders in
                         observer.send(value: folders)
                         observer.sendCompleted()
-                    },
+                },
                     ifFailure: observer.send)
-                }
             }
+        }
     }
     
     func rac_findAllMailFolder() -> SignalProducer<String, PostalError> {
@@ -56,9 +56,10 @@ public extension Postal {
             .map { (folders: [Folder]) -> String in
                 // We want to search in the "All Mail" folder but if for any reason we can't find it,
                 // we fallback in the "INBOX" folder which should always exist.
-                if let allMailFolder = folders.filter({ $0.flags.contains(.AllMail) }).first {
+                if let allMailFolder = folders.first(where: { $0.flags.contains(.AllMail) }) {
                     return allMailFolder.name
-                } else if let inboxFolder = folders.filter({ $0.flags.contains(.Inbox) }).first {
+                }
+                else if let inboxFolder = folders.filter({ $0.flags.contains(.Inbox) }).first {
                     return inboxFolder.name
                 }
                 return "INBOX"
@@ -76,41 +77,43 @@ public extension Postal {
                     ifSuccess: { uids in
                         observer.send(value: uids)
                         observer.sendCompleted()
-                    },
+                },
                     ifFailure: observer.send)
-                }
             }
+        }
     }
     
     func rac_fetch(folder: String, uids: IndexSet, flags: FetchFlag, extraHeaders: Set<String> = []) -> SignalProducer<FetchResult, PostalError> {
         return SignalProducer<FetchResult, PostalError> { observer, disposable in
             self.fetchMessages(folder, uids: uids, flags: flags, extraHeaders: extraHeaders,
-                onMessage: { message in
-                    observer.send(value: message)
-                }, onComplete: { error in
-                    if let error = error {
-                        observer.send(error: error)
-                    } else {
-                        observer.sendCompleted()
-                    }
-                })
-            }
+                               onMessage: { message in
+                                observer.send(value: message)
+            }, onComplete: { error in
+                if let error = error {
+                    observer.send(error: error)
+                }
+                else {
+                    observer.sendCompleted()
+                }
+            })
+        }
     }
     
     func rac_fetchAttachment(folder: String, uid: UInt, partId: String) -> SignalProducer<MailData, PostalError> {
         return SignalProducer<MailData, PostalError> { observer, disposable in
             self.fetchAttachments(folder, uid: uid, partId: partId,
-                onAttachment: { data in
-                    observer.send(value: data)
-                },
-                onComplete: { error in
-                    if let error = error {
-                        observer.send(error: error)
-                    } else {
-                        observer.sendCompleted()
-                    }
-                })
-            }
+                                  onAttachment: { data in
+                                    observer.send(value: data)
+            },
+                                  onComplete: { error in
+                                    if let error = error {
+                                        observer.send(error: error)
+                                    }
+                                    else {
+                                        observer.sendCompleted()
+                                    }
+            })
+        }
     }
     
     func rac_fetchTextualMail(folder: String, uids: IndexSet) -> SignalProducer<FetchResult, PostalError> {
@@ -127,7 +130,7 @@ public extension Postal {
                     }
                     .collect()
                     .map { fetchResult.mergeAttachments(attachments: Dictionary<String, MailData>($0)) }
-            }
+        }
     }
 }
 

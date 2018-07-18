@@ -29,7 +29,7 @@ public typealias CustomHeader = (name: String, value: String)
 
 public struct MessageHeader {
     public fileprivate(set) var id: String
-    public fileprivate(set) var receivedDate: Date? = nil
+    public fileprivate(set) var receivedDate: Date?
     public fileprivate(set) var subject: String = ""
     public fileprivate(set) var senders: [Address] = []
     public fileprivate(set) var from: [Address] = []

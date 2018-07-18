@@ -41,7 +41,7 @@ extension MimeType: Hashable {
     }
 }
 
-public func ==(lhs: MimeType, rhs: MimeType) -> Bool {
+public func == (lhs: MimeType, rhs: MimeType) -> Bool {
     return lhs.type == rhs.type && lhs.subtype == rhs.subtype
 }
 

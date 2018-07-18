@@ -33,7 +33,8 @@ extension IMAPSession {
         if capabilities.contains(.XList) && !capabilities.contains(.Gmail) {
             // XLIST support is deprecated on Gmail. See https://developers.google.com/gmail/imap_extensions#xlist_is_deprecated
             try mailimap_xlist(imap, prefix, "*", &list).toIMAPError?.check()
-        } else {
+        }
+        else {
             try mailimap_list(imap, prefix, "*", &list).toIMAPError?.check()
         }
         defer { mailimap_list_result_free(list) }

@@ -34,7 +34,8 @@ extension Address: CustomStringConvertible {
     public var description: String {
         if displayName.isEmpty {
             return "<\(email)>"
-        } else {
+        }
+        else {
             return "\"\(displayName)\" <\(email)>)"
         }
     }

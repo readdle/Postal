@@ -34,7 +34,8 @@ extension MailsTableViewController {
                     }, onComplete: { error in
                         if let error = error {
                             self?.showAlertError("Fetch error", message: (error as NSError).localizedDescription)
-                        } else {
+                        }
+                        else {
                             self?.tableView.reloadData()
                         }
                 })

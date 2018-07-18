@@ -80,12 +80,13 @@ extension LoginTableViewController {
 private extension LoginTableViewController {
     
     func createConfiguration() throws -> Configuration {
-        guard let email = emailTextField.text , !email.isEmpty else { throw LoginError.badEmail  }
-        guard let password = passwordTextField.text , !password.isEmpty else { throw LoginError.badPassword }
+        guard let email = emailTextField.text , !email.isEmpty else { throw LoginError.badEmail }
+        guard let password = passwordTextField.text, !password.isEmpty else { throw LoginError.badPassword }
         
         if let configuration = provider?.preConfiguration {
             return Configuration(hostname: configuration.hostname, port: configuration.port, login: email, password: .plain(password), connectionType: configuration.connectionType, checkCertificateEnabled: configuration.checkCertificateEnabled)
-        } else {
+        }
+        else {
             guard let hostname = hostnameTextField.text , !hostname.isEmpty else { throw LoginError.badHostname }
             guard let portText = portTextField.text , !portText.isEmpty else { throw LoginError.badPort }
             guard let port = UInt16(portText) else { throw LoginError.badPort }

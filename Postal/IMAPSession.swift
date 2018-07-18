@@ -27,14 +27,14 @@ import libetpan
 
 private typealias Progress = @convention(c) (Int, Int, UnsafeMutableRawPointer?) -> Void
 
-public typealias ProgressHandler = (_ current: Int, _ maximum: Int) -> ()
+public typealias ProgressHandler = (_ current: Int, _ maximum: Int) -> Void
 
 final class IMAPSession {
     let configuration: Configuration
     let imap: UnsafeMutablePointer<mailimap>
     
     private(set) var capabilities: IMAPCapability = []
-    private(set) var defaultNamespace: IMAPNamespace? = nil
+    private(set) var defaultNamespace: IMAPNamespace?
     private var serverIdentity = IMAPIdentity([:])
     
     private var selectedFolder: String = ""
@@ -43,7 +43,8 @@ final class IMAPSession {
         didSet {
             if logger != nil {
                 mailimap_set_logger(imap, _logger, Unmanaged.passRetained(self).toOpaque())
-            } else {
+            }
+            else {
                 mailimap_set_logger(imap, nil, nil)
             }
         }
@@ -63,7 +64,8 @@ final class IMAPSession {
 
         if let str = String(data: data, encoding: .utf8), !str.isEmpty {
             session.logger?("\(logType): \(str)")
-        } else {
+        }
+        else {
             session.logger?("\(logType)")
         }
     }
@@ -73,8 +75,8 @@ final class IMAPSession {
         self.configuration = configuration
         
         // We need to give the progress callbacks to stream values to end user.
-        let _bodyProgress: Progress = { _,_,_  in }
-        let _itemsProgress: Progress = { _,_,_  in }
+        let _bodyProgress: Progress = { _, _, _  in }
+        let _itemsProgress: Progress = { _, _, _  in }
         mailimap_set_progress_callback(imap, _bodyProgress, _itemsProgress, nil)
     }
     
@@ -226,7 +228,7 @@ final class IMAPSession {
         
         guard let list = serverId?.pointee.idpa_list else { return }
         
-        var dic = [String:String]()
+        var dic = [String: String]()
         sequence(list, of: mailimap_id_param.self)
             .compactMap { (param: mailimap_id_param) -> (String, String)? in
                 guard let key = String.fromUTF8CString(param.idpa_name) else { return nil }
@@ -237,7 +239,7 @@ final class IMAPSession {
         serverIdentity = IMAPIdentity(dic)
     }
     
-    fileprivate func checkCertificateIfNeeded() throws{
+    fileprivate func checkCertificateIfNeeded() throws {
         guard configuration.checkCertificateEnabled else { return }
         guard checkCertificate(imap.pointee.imap_stream, hostname: configuration.hostname) else { throw IMAPError.certificate.asPostalError }
     }

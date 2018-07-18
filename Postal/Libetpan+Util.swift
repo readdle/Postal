@@ -141,7 +141,8 @@ extension mailimf_date_time {
         if dt_year < 1000 {
             // workaround when century is not given in year
             dateComponent.year = Int(dt_year + 2000)
-        } else {
+        }
+        else {
             dateComponent.year = Int(dt_year)
         }
         
@@ -150,7 +151,8 @@ extension mailimf_date_time {
         if dt_zone >= 0 {
             zoneHour = Int(dt_zone / 100)
             zoneMin = Int(dt_zone % 100)
-        } else {
+        }
+        else {
             zoneHour = Int(-((-dt_zone) / 100))
             zoneMin = Int(-((-dt_zone) % 100))
         }
@@ -174,7 +176,8 @@ extension mailimap_date_time {
         if dt_year < 1000 {
             // workaround when century is not given in year
             dateComponent.year = Int(dt_year + 2000)
-        } else {
+        }
+        else {
             dateComponent.year = Int(dt_year)
         }
         
@@ -183,7 +186,8 @@ extension mailimap_date_time {
         if dt_zone >= 0 {
             zoneHour = Int(dt_zone / 100)
             zoneMin = Int(dt_zone % 100)
-        } else {
+        }
+        else {
             zoneHour = Int(-((-dt_zone) / 100))
             zoneMin = Int(-((-dt_zone) % 100))
         }
