@@ -27,7 +27,7 @@ import libetpan
 
 extension IMAPSession {
     func delete(folderNamed folderName: String) throws {
-        try select("INBOX")
+        try close()
         try mailimap_delete(imap, folderName).toIMAPError?.check()
     }
     

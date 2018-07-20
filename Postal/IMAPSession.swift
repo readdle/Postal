@@ -218,7 +218,14 @@ final class IMAPSession {
         selectedFolder = folder
         return IMAPFolderInfo(selectionInfo: info)
     }
-    
+
+    func close() throws {
+        guard selectedFolder.isEmpty == false else {
+            return
+        }
+        try mailimap_close(imap).toIMAPError?.check()
+    }
+
     func configureIdentity() throws {
         guard capabilities.contains(.Id) else { return }
         
