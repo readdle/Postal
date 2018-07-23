@@ -271,7 +271,7 @@ public extension Postal {
     /// Set flag.
     ///
     /// - parameters:
-    ///     - flag: The message flag. Supported values: SEEN, FLAGGED
+    ///     - flag: The message flag.
     ///     - folder: The folder where the messages are.
     ///     - uid: The message uid.
     ///     - completion: The completion handler when the request is finished with or without an error.
@@ -285,7 +285,7 @@ public extension Postal {
     /// Drop flag.
     ///
     /// - parameters:
-    ///     - flag: The message flag. Supported values: SEEN, FLAGGED
+    ///     - flag: The message flag.
     ///     - folder: The folder where the messages are.
     ///     - uid: The message uid.
     ///     - completion: The completion handler when the request is finished with or without an error.

@@ -95,3 +95,22 @@ extension MessageFlag {
         }
     }
 }
+
+extension mailimap_flag {
+
+    static func makeFlag(with flag: MessageFlag) -> UnsafeMutablePointer<mailimap_flag>? {
+        switch flag {
+        case .answered: return mailimap_flag_new_answered()
+        case .flagged: return mailimap_flag_new_flagged()
+        case .deleted: return mailimap_flag_new_deleted()
+        case .seen: return mailimap_flag_new_seen()
+        case .draft: return mailimap_flag_new_draft()
+        case .forwarded: return mailimap_flag_new_flag_keyword("$Forwarded".unreleasedUTF8CString)
+        case .MDNSent: return mailimap_flag_new_flag_keyword("$MDNSent".unreleasedUTF8CString)
+        case .submitPending: return mailimap_flag_new_flag_keyword("$SubmitPending".unreleasedUTF8CString)
+        case .submitted: return mailimap_flag_new_flag_keyword("$Submitted".unreleasedUTF8CString)
+        default: return nil
+        }
+    }
+
+}

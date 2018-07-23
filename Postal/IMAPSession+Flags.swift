@@ -55,11 +55,11 @@ extension IMAPSession {
             return
         }
 
-        switch flagType {
-        case MAILIMAP_FLAG_FLAGGED: mailimap_flag_list_add(newFlagList, mailimap_flag_new_flagged())
-        case MAILIMAP_FLAG_SEEN: mailimap_flag_list_add(newFlagList, mailimap_flag_new_seen())
-        default: break
+        guard let flag = mailimap_flag.makeFlag(with: flag) else {
+            return
         }
+
+        mailimap_flag_list_add(newFlagList, flag)
 
         try store(newFlagList, uid: uid)
     }
