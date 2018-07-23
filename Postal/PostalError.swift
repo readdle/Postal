@@ -31,6 +31,7 @@ public enum PostalError: Error {
     case parse
     case certificate
     case nonExistantFolder
+    case appendError(Int)
 }
 
 extension PostalError: Equatable {

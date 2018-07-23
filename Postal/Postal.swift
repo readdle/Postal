@@ -264,6 +264,24 @@ public extension Postal {
     }
 }
 
+public extension Postal {
+
+    /// Append RFC822 message to the folder.
+    ///
+    /// - parameters:
+    ///     - folder: The folder where messages will be appended.
+    ///     - completion: The completion handler when the request is finished with or without an error,
+    ///          with the new message UID.
+    func appendMessage(fileAt url: URL, toFolder: String, completion: @escaping (Result<Int, PostalError>) -> Void) {
+        assert(!toFolder.isEmpty, "toFolder parameter can't be empty")
+
+        doAsync({
+            try self.session.appendMessage(fileAt: url, toFolder: toFolder)
+        }, completion: completion)
+    }
+
+}
+
 // MARK: - Message Flags
 
 public extension Postal {

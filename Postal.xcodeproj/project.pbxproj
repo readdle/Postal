@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		24532F2F2105D5D2008D68C7 /* IMAPSession+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24532F2E2105D5D2008D68C7 /* IMAPSession+Flags.swift */; };
 		24532F302105D5D2008D68C7 /* IMAPSession+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24532F2E2105D5D2008D68C7 /* IMAPSession+Flags.swift */; };
+		24B68A2F210615E100803904 /* IMAPSession+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B68A2E210615E100803904 /* IMAPSession+Import.swift */; };
+		24B68A30210615E100803904 /* IMAPSession+Import.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B68A2E210615E100803904 /* IMAPSession+Import.swift */; };
 		980745411D63311D0021D60F /* IMAPSession+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980745401D63311D0021D60F /* IMAPSession+List.swift */; };
 		980745421D6331AC0021D60F /* IMAPSession+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980745401D63311D0021D60F /* IMAPSession+List.swift */; };
 		9812C31F1D50959500630D46 /* Postal.h in Headers */ = {isa = PBXBuildFile; fileRef = 9812C31E1D50959500630D46 /* Postal.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -163,6 +165,7 @@
 
 /* Begin PBXFileReference section */
 		24532F2E2105D5D2008D68C7 /* IMAPSession+Flags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMAPSession+Flags.swift"; sourceTree = "<group>"; };
+		24B68A2E210615E100803904 /* IMAPSession+Import.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMAPSession+Import.swift"; sourceTree = "<group>"; };
 		980745401D63311D0021D60F /* IMAPSession+List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IMAPSession+List.swift"; sourceTree = "<group>"; };
 		9812C31C1D50959500630D46 /* Postal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Postal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9812C31E1D50959500630D46 /* Postal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Postal.h; sourceTree = "<group>"; };
@@ -184,7 +187,7 @@
 		F7039DAA1D92B23200132867 /* LibetpanConversionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LibetpanConversionTests.swift; sourceTree = "<group>"; };
 		F71325651D50CA84005DFC15 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		F75DD4741D4BAC1500D40E9C /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F77337291D60FF610015A1D4 /* IMAPSession+Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "IMAPSession+Move.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		F77337291D60FF610015A1D4 /* IMAPSession+Move.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "IMAPSession+Move.swift"; sourceTree = "<group>"; };
 		F7C25FFB1DE4E9E50021A138 /* IMAPSession+Folder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IMAPSession+Folder.swift"; sourceTree = "<group>"; };
 		F7E884A51D59C7F500D02CC2 /* PostalError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostalError.swift; sourceTree = "<group>"; };
 		F7F039F51D4BA5A70083397F /* Address+Parsing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = "Address+Parsing.swift"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -277,6 +280,7 @@
 				F7C25FFB1DE4E9E50021A138 /* IMAPSession+Folder.swift */,
 				F7F03A061D4BA5A70083397F /* IMAPSession.swift */,
 				24532F2E2105D5D2008D68C7 /* IMAPSession+Flags.swift */,
+				24B68A2E210615E100803904 /* IMAPSession+Import.swift */,
 			);
 			name = Session;
 			sourceTree = "<group>";
@@ -675,6 +679,7 @@
 				9812C33F1D509B6900630D46 /* Libetpan+Util.swift in Sources */,
 				9812C3321D509B6400630D46 /* MimeType+Parsing.swift in Sources */,
 				9812C3341D509B6400630D46 /* FetchResult.swift in Sources */,
+				24B68A30210615E100803904 /* IMAPSession+Import.swift in Sources */,
 				9812C3381D509B6400630D46 /* IMAPIdentity.swift in Sources */,
 				9812C33D1D509B6400630D46 /* Logger+IMAP.swift in Sources */,
 				9812C3401D509B6900630D46 /* Util.swift in Sources */,
@@ -728,6 +733,7 @@
 				F7F03EA81D4BA5A90083397F /* Logger.swift in Sources */,
 				F7F03C7E1D4BA5A90083397F /* Extension+Parsing.swift in Sources */,
 				F7F03EA91D4BA5A90083397F /* MailData+Decode.swift in Sources */,
+				24B68A2F210615E100803904 /* IMAPSession+Import.swift in Sources */,
 				F7F03C841D4BA5A90083397F /* IMAPFolder.swift in Sources */,
 				F7F03C7F1D4BA5A90083397F /* FetchResult.swift in Sources */,
 				F7F03EAD1D4BA5A90083397F /* MessageAttribute+Parsing.swift in Sources */,
