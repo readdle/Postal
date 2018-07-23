@@ -80,3 +80,18 @@ extension mailimap_flag {
         }
     }
 }
+
+extension MessageFlag {
+    
+    var mailimapType: Int? {
+        switch self {
+        case .answered: return MAILIMAP_FLAG_ANSWERED
+        case .flagged: return MAILIMAP_FLAG_FLAGGED
+        case .deleted: return MAILIMAP_FLAG_DELETED
+        case .seen: return MAILIMAP_FLAG_SEEN
+        case .draft: return MAILIMAP_FLAG_DRAFT
+        case .forwarded, .MDNSent, .submitPending, .submitted: return MAILIMAP_FLAG_KEYWORD
+        default: return nil
+        }
+    }
+}

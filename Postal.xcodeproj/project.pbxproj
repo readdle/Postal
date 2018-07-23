@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24532F2F2105D5D2008D68C7 /* IMAPSession+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24532F2E2105D5D2008D68C7 /* IMAPSession+Flags.swift */; };
+		24532F302105D5D2008D68C7 /* IMAPSession+Flags.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24532F2E2105D5D2008D68C7 /* IMAPSession+Flags.swift */; };
 		980745411D63311D0021D60F /* IMAPSession+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980745401D63311D0021D60F /* IMAPSession+List.swift */; };
 		980745421D6331AC0021D60F /* IMAPSession+List.swift in Sources */ = {isa = PBXBuildFile; fileRef = 980745401D63311D0021D60F /* IMAPSession+List.swift */; };
 		9812C31F1D50959500630D46 /* Postal.h in Headers */ = {isa = PBXBuildFile; fileRef = 9812C31E1D50959500630D46 /* Postal.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -160,6 +162,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		24532F2E2105D5D2008D68C7 /* IMAPSession+Flags.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "IMAPSession+Flags.swift"; sourceTree = "<group>"; };
 		980745401D63311D0021D60F /* IMAPSession+List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IMAPSession+List.swift"; sourceTree = "<group>"; };
 		9812C31C1D50959500630D46 /* Postal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Postal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9812C31E1D50959500630D46 /* Postal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Postal.h; sourceTree = "<group>"; };
@@ -273,6 +276,7 @@
 				980745401D63311D0021D60F /* IMAPSession+List.swift */,
 				F7C25FFB1DE4E9E50021A138 /* IMAPSession+Folder.swift */,
 				F7F03A061D4BA5A70083397F /* IMAPSession.swift */,
+				24532F2E2105D5D2008D68C7 /* IMAPSession+Flags.swift */,
 			);
 			name = Session;
 			sourceTree = "<group>";
@@ -687,6 +691,7 @@
 				9812C32A1D509B6400630D46 /* ContentEncoding+Parsing.swift in Sources */,
 				9812C32F1D509B6400630D46 /* MessageFlags+Parsing.swift in Sources */,
 				9812C3261D509B5700630D46 /* CertificateUtils.swift in Sources */,
+				24532F302105D5D2008D68C7 /* IMAPSession+Flags.swift in Sources */,
 				9812C3271D509B5C00630D46 /* IMFError.swift in Sources */,
 				9812C3391D509B6400630D46 /* IMAPNamespace.swift in Sources */,
 				9812C3371D509B6400630D46 /* IMAPFolder.swift in Sources */,
@@ -739,6 +744,7 @@
 				F773372A1D60FF610015A1D4 /* IMAPSession+Move.swift in Sources */,
 				F7F03C781D4BA5A90083397F /* Address+Parsing.swift in Sources */,
 				F7F03C821D4BA5A90083397F /* IMAPCapability.swift in Sources */,
+				24532F2F2105D5D2008D68C7 /* IMAPSession+Flags.swift in Sources */,
 				F7F03EAF1D4BA5A90083397F /* MessageHeader+Parsing.swift in Sources */,
 				F7F03EA71D4BA5A90083397F /* Logger+IMAP.swift in Sources */,
 				F7F03C881D4BA5A90083397F /* IMAPSession+Search.swift in Sources */,

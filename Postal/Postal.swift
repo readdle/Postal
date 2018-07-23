@@ -264,6 +264,39 @@ public extension Postal {
     }
 }
 
+// MARK: - Message Flags
+
+public extension Postal {
+
+    /// Set flag.
+    ///
+    /// - parameters:
+    ///     - flag: The message flag. Supported values: SEEN, FLAGGED
+    ///     - folder: The folder where the messages are.
+    ///     - uid: The message uid.
+    ///     - completion: The completion handler when the request is finished with or without an error.
+
+    func set(_ flag: MessageFlag, message uid: UInt, folder: String, completion: @escaping (Result<Void, PostalError>) -> ()) {
+        doAsync({
+            try self.session.set(flag, folder: folder, uid: uid)
+        }, completion: completion)
+    }
+
+    /// Drop flag.
+    ///
+    /// - parameters:
+    ///     - flag: The message flag. Supported values: SEEN, FLAGGED
+    ///     - folder: The folder where the messages are.
+    ///     - uid: The message uid.
+    ///     - completion: The completion handler when the request is finished with or without an error.
+
+    func drop(_ flag: MessageFlag, message uid: UInt, folder: String, completion: @escaping (Result<Void, PostalError>) -> ()) {
+        doAsync({
+            try self.session.drop(flag, folder: folder, uid: uid)
+        }, completion: completion)
+    }
+}
+
 // MARK: - Privates
 
 private extension Postal {

@@ -12,6 +12,8 @@ Pod::Spec.new do |s|
 
   s.source = { :git => 'git@github.com:readdle/Postal.git', :tag => 'v' + s.version.to_s }
 
+  s.module_name = 'Postal'
+  
   s.source_files  = 'Postal/*.{swift,h}'
   s.preserve_paths = 'dependencies/*'
 
