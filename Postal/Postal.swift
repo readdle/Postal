@@ -282,6 +282,25 @@ public extension Postal {
 
 }
 
+public extension  Postal {
+    /// Copy messages from a given folder to another folder.
+    ///
+    /// - parameters:
+    ///     - fromFolder: The folder where the messages are.
+    ///     - toFolder: The folder where messages will be move.
+    ///     - uids: The message uids to be moved.
+    ///     - completion: The completion handler when the request is finished with or without an error.
+    ///         with the mapping between uids inside the previous folder and the new folder.
+    func copyMessages(fromFolder: String, toFolder: String, uids: IndexSet, completion: @escaping (Result<[Int: Int], PostalError>) -> Void) {
+        assert(!fromFolder.isEmpty, "fromFolder parameter can't be empty")
+        assert(!toFolder.isEmpty, "toFolder parameter can't be empty")
+
+        doAsync({
+            try self.session.copyMessages(fromFolder: fromFolder, toFolder: toFolder, uids: uids)
+        }, completion: completion)
+    }
+}
+
 // MARK: - Message Flags
 
 public extension Postal {
