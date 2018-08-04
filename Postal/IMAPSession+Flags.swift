@@ -107,7 +107,7 @@ extension IMAPSession {
         try mailimap_uid_fetch(imap, imapSet, type, &result).toIMAPError?.check()
 
         guard let attributes = result else {
-            return nil
+            return clist_new()?.pointee
         }
 
         var flagsAttribute: mailimap_msg_att_item?
@@ -124,7 +124,15 @@ extension IMAPSession {
             }
         }
 
-        return flagsAttribute?.att_data.att_dyn.pointee.att_list.pointee
+        guard let attDyn = flagsAttribute?.att_data.att_dyn else {
+            return clist_new()?.pointee
+        }
+
+        guard let attList = attDyn.pointee.att_list else {
+            return clist_new()?.pointee
+        }
+
+        return attList.pointee
     }
 
     private func store(_ flags: UnsafeMutablePointer<mailimap_flag_list>?, uid: UInt) throws {
